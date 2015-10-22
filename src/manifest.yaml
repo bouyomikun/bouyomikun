@@ -5,4 +5,7 @@ version: "0.1.0.0"
 app:
   background:
     scripts:
-      - "coffee/background.coffee"
+      - "scripts/background.js"
+
+permissions:
+  - "tts"
