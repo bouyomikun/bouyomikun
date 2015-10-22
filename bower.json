@@ -1,0 +1,8 @@
+{
+  "name": "棒読みくん",
+  "private": true,
+  "dependencies": {
+    "iron-elements": "PolymerElements/iron-elements#~1.0.4",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.5"
+  }
+}
