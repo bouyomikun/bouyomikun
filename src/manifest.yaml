@@ -9,3 +9,5 @@ app:
 
 permissions:
   - "tts"
+  - "storage"
+  - "https://fonts/googleapis.com/*"

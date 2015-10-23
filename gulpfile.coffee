@@ -37,11 +37,17 @@ gulp.task 'script', ->
     .pipe gulp.dest 'dev/scripts'
     .pipe $.size title: 'script'
 
-gulp.task 'watch', ['elements', 'html', 'manifest', 'script'], ->
+gulp.task 'styles', ->
+  gulp.src 'src/styles/*.sass'
+    .pipe do $.sass
+    .pipe gulp.dest 'dev/styles'
+
+gulp.task 'watch', ['elements', 'html', 'manifest', 'script', 'styles'], ->
   do $.livereload.listen
 
   gulp.watch 'src/elements/*', ['elements', reload]
   gulp.watch 'src/*.html', ['html', reload]
   gulp.watch 'src/manifest.json', ['manifest']
-  gulp.watch 'src/coffee/*.coffee', ['script', reload]
+  gulp.watch 'src/scripts/*.coffee', ['script', reload]
+  gulp.watch 'src/styles/*.sass', ['styles', reload]
   return

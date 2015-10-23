@@ -1,10 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>棒読みくん</title>
+
+  <link rel="import" href="elements/elements.html">
+  <link rel="stylesheet" href="styles/theme.css" is="custom-style">
 </head>
-<body>
-  <h1>test</h1>
+
+<body unresolved class="fullbleed">
+  <template is="dom-bind" id="app">
+    <div class="layout vertical">
+      <paper-toolbar>
+        <paper-icon-button icon="av:play-arrow" onclick="{{onSpeak}}"></paper-icon-button>
+        <span class="flex"></span>
+        <paper-icon-button icon="more-vert"></paper-icon-button>
+      </paper-toolbar>
+      <div class="layout horizontal justified">
+        <section class="layout vertical justified flex">
+          <paper-dropdown-menu class="flex" label="音声合成エンジン">
+            <paper-menu class="dropdown-content" selected="{{voiceIndex}}">
+              <template is="dom-repeat" items="{{voices}}">
+                <paper-item>{{item.voiceName}}</paper-item>
+              </template>
+            </paper-menu>
+          </paper-dropdown-menu>
+        </section>
+        <section class="layout vertical flex">
+          <div class="center horizontal layout">
+            <div>音量</div>
+            <paper-slider class="flex" value="{{volume}}" max="1.00" step="0.01" pin></paper-slider>
+          </div>
+          <div class="center horizontal layout">
+            <div>速度</div>
+            <paper-slider class="flex" value="{{rate}}" max="3.00" step="0.01" pin></paper-slider>
+          </div>
+          <div class="center horizontal layout">
+            <div>音程</div>
+            <paper-slider class="flex" value="{{pitch}}" max="2.00" step="0.01" pin></paper-slider>
+          </div>
+        </section>
+      </div>
+      <section class="flex">
+        <paper-textarea value="{{text}}" label="読み上げ文章" rows="4"></paper-textarea>
+      </section>
+    </div>
+    <paper-toast id="toastErrorPlay" text="音声の再生に失敗しました"></paper-toast>
+  </template>
+  <script src="scripts/app.js"></script>
 </body>
+
 </html>
